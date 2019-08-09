@@ -6,3 +6,7 @@
 /RFT Api/bin/Debug/netcoreapp3.0
 /RFT Api/obj
 *.user
+*.suo
+/.vs/RndFd Tournament/DesignTimeBuild
+/.vs
+/RFT Api/bin/IISSupport

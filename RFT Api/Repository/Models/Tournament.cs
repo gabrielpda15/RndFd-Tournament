@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace RFT.Api.Repository.Models
 {
     [Table("rft_tournament")]
-    public class Tournament
+    public class Tournament : Base.BaseEntity
     {
         [StringLength(60)]
         [DataType("varchar")]

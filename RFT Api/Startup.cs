@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RFT.Api.Interfaces;
+using RFT.Api.Repository;
 
 namespace RFT.Api
 {
@@ -27,13 +29,15 @@ namespace RFT.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Repository.RFTContext>(o =>
+            services.AddDbContext<RFTContext>(o =>
             {
                 o.UseMySql(Configuration.GetConnectionString(DEFAULTCONN), sqlo =>
                 {
                     sqlo.ServerVersion(new Version(8, 0, 15), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
                 });
             });
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddControllers();
         }
