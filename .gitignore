@@ -1,0 +1,8 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/RndFd Tournament/v16
+/RFT Api/bin/Debug/netcoreapp3.0
+/RFT Api/obj
+*.user
