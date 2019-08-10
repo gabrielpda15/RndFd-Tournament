@@ -1,4 +1,5 @@
-﻿using RFT.Api.Repository;
+﻿using RFT.Api.Interfaces;
+using RFT.Api.Repository;
 using RFT.Api.Repository.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace RFT.Api.Controllers
 {
     public class TournamentController : Base.CrudController<Tournament>
     {
-        public TournamentController(UnitOfWork unitOfWork) : base(unitOfWork)
+        public TournamentController(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

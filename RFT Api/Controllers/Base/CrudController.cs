@@ -20,7 +20,7 @@ namespace RFT.Api.Controllers.Base
     public class CrudController<TEntity> : Controller where TEntity : BaseEntity
     {
         protected IRepository<TEntity> Repository { get; }
-        protected UnitOfWork UnitOfWork { get; }
+        protected IUnitOfWork UnitOfWork { get; }
 
         public class PostRequest
         {
@@ -28,7 +28,7 @@ namespace RFT.Api.Controllers.Base
             public TEntity Entity { get; set; }
         }
 
-        public CrudController(UnitOfWork unitOfWork) : base()
+        public CrudController(IUnitOfWork unitOfWork) : base()
         {
             UnitOfWork = unitOfWork;
             Repository = unitOfWork.GetRepository<TEntity>();
