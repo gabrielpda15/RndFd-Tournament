@@ -7,6 +7,7 @@ namespace RFT.Api.Repository.Models
 {
     public enum Permission { Admin = 1, User = 0 }
 
+    [Flags]
     public enum Elo
     {
         None = 0,
