@@ -15,9 +15,11 @@ namespace RFT.Api.Interfaces.Base
         where TContext : DbContext
     {
         public DbSet<TEntity> Entities { get; }
+        private TContext Context { get; }
 
         public RepositoryBase(TContext context)
         {
+            Context = context;
             Entities = context.Set<TEntity>();
         }
 
@@ -57,6 +59,19 @@ namespace RFT.Api.Interfaces.Base
             {
                 var toRemove = await Entities.SingleAsync(x => x.Id == id, ct);
                 Entities.Remove(toRemove);
+                return true;
+            }
+            catch { return false; }
+        }
+
+        public async Task<bool> Update(TEntity entity, User user, CancellationToken ct = default)
+        {
+            try
+            {
+                var toUpdate = await Entities.SingleAsync(x => x.Id == entity.Id);
+                entity.EditionUser = user.Username;
+                entity.EditionDate = DateTime.Now;
+                Context.Entry(entity).State = EntityState.Modified;
                 return true;
             }
             catch { return false; }

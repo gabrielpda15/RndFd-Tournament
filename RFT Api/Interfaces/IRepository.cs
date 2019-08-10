@@ -15,5 +15,6 @@ namespace RFT.Api.Repository
         Task<TEntity> GetById(int id, CancellationToken ct = default);
         Task<TEntity> Post(TEntity entity, User user, CancellationToken ct = default);
         Task<bool> Delete(int id, CancellationToken ct = default);
+        Task<bool> Update(TEntity entity, User user, CancellationToken ct = default);
     }
 }

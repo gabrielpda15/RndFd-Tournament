@@ -86,5 +86,17 @@ namespace RFT.Api.Controllers.Base
             return result ? (IActionResult)Ok() : (IActionResult)NotFound();
         }
 
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public virtual async Task<IActionResult> Update([FromBody]PostRequest request, CancellationToken ct)
+        {
+            var result = await Repository.Update(request.Entity, request.User, ct);
+            await UnitOfWork.CommitAsync(ct);
+            return result ? (IActionResult)Ok() : (IActionResult)BadRequest();
+        }
+
     }
 }

@@ -64,8 +64,11 @@ namespace RFT.Api.Controllers
             var players = customData.AsEnumerable();
             */
 
+            var players = await UnitOfWork.GetRepository<Player>().Get();
+            /*
             var pt = (await Repository.GetById(id, ct)).PlayerTournaments;
             var players = pt.Select(x => x.Player);
+            */
 
             var nTeams = players.Count() / 5;
             var eloAverage = players.Select(x => x.Elo).Select(x => GetEloValue(x)).Average();
