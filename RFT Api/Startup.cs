@@ -18,7 +18,7 @@ namespace RFT.Api
 {
     public class Startup
     {
-        private const string DEFAULTCONN = "DefaultConnection";
+        private const string DEFAULTCONN = "SqlServerConnection";
 
         public Startup(IConfiguration configuration)
         {
@@ -31,10 +31,7 @@ namespace RFT.Api
         {
             services.AddDbContext<RFTContext>(o =>
             {
-                o.UseMySql(Configuration.GetConnectionString(DEFAULTCONN), sqlo =>
-                {
-                    sqlo.ServerVersion(new Version(8, 0, 15), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
-                });
+                o.UseSqlServer(Configuration.GetConnectionString(DEFAULTCONN));
             });
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
