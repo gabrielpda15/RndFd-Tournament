@@ -27,5 +27,9 @@ namespace RFT.Api.Repository.Models
         public Role Roles { get; set; }
 
         public PlayerTournament[] PlayerTournaments { get; set; }
+
+        public TeamPlayer[] TeamPlayers { get; set; }
+
+        public User User { get; set; }
     }
 }

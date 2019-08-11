@@ -22,5 +22,12 @@ namespace RFT.Api.Repository.Models
 
         [ScaffoldColumn(false)]
         public Permission Permission { get; set; }
+
+        public int PlayerId { get; set; }
+        public Player Player { get; set; }
+
+        public int TeamAdminId { get; set; }
+
+        public Team TeamAdmin { get; set; }
     }
 }

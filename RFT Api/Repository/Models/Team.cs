@@ -7,19 +7,22 @@ using System.Threading.Tasks;
 
 namespace RFT.Api.Repository.Models
 {
-    [Table("rft_tournament")]
-    public class Tournament : Base.BaseEntity
+    [Table("rft_teams")]
+    public class Team : Base.BaseEntity
     {
-        [StringLength(60)]
+        [StringLength(32)]
         [DataType("varchar")]
         [ScaffoldColumn(false)]
         public string Name { get; set; }
 
-        [ScaffoldColumn(false)]
-        public DateTime Date { get; set; }
+        public int EloPoint { get; set; }
 
-        public PlayerTournament[] PlayerTournaments { get; set; }
+        public int Attempts { get; set; }
 
-        public Team[] Teams { get; set; }
+        public User Admin { get; set; }
+
+        public TeamPlayer[] TeamPlayers { get; set; }
+
+        public Tournament Tournament { get; set; }
     }
 }

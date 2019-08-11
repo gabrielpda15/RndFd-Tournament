@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RFT.Api.Repository;
 
 namespace RFT.Api.Migrations
 {
     [DbContext(typeof(RFTContext))]
-    partial class RFTContextModelSnapshot : ModelSnapshot
+    [Migration("20190811010903_AddTeam")]
+    partial class AddTeam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,7 +86,7 @@ namespace RFT.Api.Migrations
 
                     b.HasIndex("TournamentId");
 
-                    b.ToTable("rft_teams");
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("RFT.Api.Repository.Models.TeamPlayer", b =>
@@ -97,7 +99,7 @@ namespace RFT.Api.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("rft_teamplayers");
+                    b.ToTable("TeamPlayer");
                 });
 
             modelBuilder.Entity("RFT.Api.Repository.Models.Tournament", b =>
